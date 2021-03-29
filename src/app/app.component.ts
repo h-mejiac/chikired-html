@@ -8,5 +8,13 @@ import { Usuario } from './models/usuario';
 })
 export class AppComponent {
   title = 'Primer comentario';
-  usuario!: Usuario;  
+  usuario: Usuario;
+
+  constructor(){
+    this.usuario = new Usuario('','','',false,false,0);
+  }
+
+  public onSubmit(){
+    console.log(this.usuario);
+  }
 }

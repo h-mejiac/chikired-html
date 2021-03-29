@@ -13,16 +13,18 @@
             </nav>
             <nav class="level">
                 <div class="level-item has-text-centered">
-                    <div class="formulario">
-                        <div class="field">
-                            <label class="label">Registro</label>
-                            <div class="control">
-                                <input class="input is-success" type="text" placeholder="Número de empleado">
+                    <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+                        <div class="formulario">
+                            <div class="field">
+                                <label class="label">Registro</label>
+                                <div class="control">
+                                    <input class="input is-danger" #empleado="ngModel" name="empleado" [(ngModel)]="usuario.empleado" type="text" placeholder="Número de empleado">
+                                </div>
+                                <p *ngIf="empleado.touched" class="help is-danger">Coloque el número de empleado</p>
                             </div>
-                            <p class="help is-success">This username is available</p>
+                            <button type="submit" class="button is-danger is-fullwidth">Iniciar</button>
                         </div>
-                        <button class="button is-danger is-fullwidth">Iniciar</button>
-                    </div>
+                    </form>
                 </div>
             </nav>
             <nav class="level">
