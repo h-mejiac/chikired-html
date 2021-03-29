@@ -15,25 +15,14 @@ export class AppComponent implements OnInit {
   constructor(
     private _usuarioServicio:UsuarioService
   ){
-    this.usuario = new Usuario('','','',false,false,0);
+    this.usuario = new Usuario('','','','',false,false,0);
   }
 
   ngOnInit(){
-     
+    this._usuarioServicio.signup();
   }
 
   public onSubmit(){
     console.log(this.usuario);
-    this._usuarioServicio.signup(this.usuario).subscribe(
-      response => {
-        console.log(response);
-      },
-      error => {
-        var errorMessage = <any>error;
-        if(errorMessage != null){
-          console.log(error);
-        }
-      }
-    );
   }
 }

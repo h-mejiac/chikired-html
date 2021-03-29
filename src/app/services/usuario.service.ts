@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs/internal/Observable';
 import {map} from 'rxjs/operators'; 
+import { Observable } from 'rxjs/Observable';
 import {GLOBAL} from './global';
 
 @Injectable()
@@ -11,15 +11,16 @@ export class UsuarioService {
         this.url = GLOBAL.url;
     }
 
-    signup(empleado_buscar: { gethash: null; }, gethash = null){
-        if (gethash != null) {
-            empleado_buscar.gethash = gethash;
+    signup(buscar_to_usuario, gethash = null){
+        if(gethash != null){
+            buscar_to_usuario.gethash = gethash;
         }
-        let params = JSON.stringify(empleado_buscar); 
-        let theheaders = new HttpHeaders();
+        let datajson = JSON.stringify(buscar_to_usuario);
+        let params = datajson;
 
-        theheaders = theheaders.set('Content-Type', 'application/json');
-        
-        return this._http.post(this.url + 'login', params, { headers: theheaders}).map((res: { json: () => any; }) => res.json());
+        let HttpHeaders = new Headers({'Content-Type':'application/json'});
+
+        return this._http.post(this.url+'login', params, {HttpHeaders: Headers}).pipe(map(res => res.json())); 
+
     }
 }
