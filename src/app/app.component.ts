@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   constructor(
     private _usuarioServicio:UsuarioService
   ){
-    this.usuario = new Usuario('','','','',false,false,0);
+    this.usuario = new Usuario('','','',false,false,0);
   }
 
   ngOnInit(){
