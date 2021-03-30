@@ -19,10 +19,11 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(){
-    this._usuarioServicio.signup();
+    
   }
 
   public onSubmit(){
+    this._usuarioServicio.signup();
     console.log(this.usuario);
   }
 }
